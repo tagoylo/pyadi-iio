@@ -62,6 +62,7 @@ def get_test_map():
         "zynq-adrv9361-z7035-box",
         "zynq-adrv9361-z7035-bob",
         "zynq-adrv9361-z7035-bob-cmos",
+        "vc707_fmcomms2-3"
     ]
     #  + test_map["fmcomms5"]
     test_map["ad9364"] = [
