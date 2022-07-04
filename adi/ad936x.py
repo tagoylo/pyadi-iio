@@ -187,10 +187,10 @@ class ad9364(rx_tx_def, context_manager):
         # fmt: on
         current_rate = self._get_iio_attr("voltage0", "sampling_frequency", False)
 
-        if self._get_iio_attr("voltage", "voltage_filter_fir_en", False):
+        if self._get_iio_attr("out", "voltage_filter_fir_en", False):
             if current_rate <= (25000000 // 12):
                 self._set_iio_attr("voltage0", "sampling_frequency", False, 3000000)
-            self._set_iio_attr("voltage", "voltage_filter_fir_en", False, 0)
+            self._set_iio_attr("out", "voltage_filter_fir_en", False, 0)
 
         # Assemble FIR filter config string
         fir_config_string = ""
@@ -208,11 +208,11 @@ class ad9364(rx_tx_def, context_manager):
             max_rate = (dacrate // txrate) * 16
             if max_rate < taps:
                 self._set_iio_attr("voltage0", "sampling_frequency", False, 3000000)
-            self._set_iio_attr("voltage", "voltage_filter_fir_en", False, 1)
+            self._set_iio_attr("out", "voltage_filter_fir_en", False, 1)
             self._set_iio_attr("voltage0", "sampling_frequency", False, rate)
         else:
             self._set_iio_attr("voltage0", "sampling_frequency", False, rate)
-            self._set_iio_attr("voltage", "voltage_filter_fir_en", False, 1)
+            self._set_iio_attr("out", "voltage_filter_fir_en", False, 1)
 
     @property
     def rx_lo(self):
