@@ -1,7 +1,7 @@
-# import pytest
+import pytest
 
-# hardware = ["packrf", "adrv9361", "fmcomms2", "ad9361"]
-# classname = "adi.ad9361"
+hardware = ["packrf", "adrv9361", "fmcomms2", "ad9361"]
+classname = "adi.ad9361"
 
 # params = dict(
 #     one_cw_tone_manual=dict(
@@ -114,39 +114,39 @@
 # )
 
 
-# #########################################
-# @pytest.mark.iio_hardware(hardware)
-# @pytest.mark.parametrize("classname", [(classname)])
-# @pytest.mark.parametrize(
-#     "attr, start, stop, step, tol, repeats",
-#     [
-#         ("tx_hardwaregain_chan0", -89.75, 0.0, 0.25, 0, 100),
-#         ("tx_hardwaregain_chan1", -89.75, 0.0, 0.25, 0, 100),
-#         ("rx_lo", 70000000, 6000000000, 1, 8, 100),
-#         ("tx_lo", 47000000, 6000000000, 1, 8, 100),
-#         ("sample_rate", 2084000, 61440000, 1, 4, 20),
-#         ("loopback", 0, 0, 1, 0, 0),
-#         ("loopback", 1, 1, 1, 0, 0),
-#         ("loopback", 2, 2, 1, 0, 0),
-#     ],
-# )
-# def test_ad9361_attr(
-#     test_attribute_single_value,
-#     iio_uri,
-#     classname,
-#     attr,
-#     start,
-#     stop,
-#     step,
-#     tol,
-#     repeats,
-# ):
-#     test_attribute_single_value(
-#         iio_uri, classname, attr, start, stop, step, tol, repeats
-#     )
+#########################################
+@pytest.mark.iio_hardware(hardware)
+@pytest.mark.parametrize("classname", [(classname)])
+@pytest.mark.parametrize(
+    "attr, start, stop, step, tol, repeats",
+    [
+        #("tx_hardwaregain_chan0", -89.75, 0.0, 0.25, 0, 100),
+        #("tx_hardwaregain_chan1", -89.75, 0.0, 0.25, 0, 100),
+        #("rx_lo", 70000000, 6000000000, 1, 8, 100),
+        #("tx_lo", 47000000, 6000000000, 1, 8, 100),
+        ("sample_rate", 2084000, 61440000, 1, 4, 20),
+        #("loopback", 0, 0, 1, 0, 0),
+        #("loopback", 1, 1, 1, 0, 0),
+        #("loopback", 2, 2, 1, 0, 0),
+    ],
+)
+def test_ad9361_attr(
+    test_attribute_single_value,
+    iio_uri,
+    classname,
+    attr,
+    start,
+    stop,
+    step,
+    tol,
+    repeats,
+):
+    test_attribute_single_value(
+        iio_uri, classname, attr, start, stop, step, tol, repeats
+    )
 
 
-# #########################################
+#########################################
 # @pytest.mark.iio_hardware(hardware, True)
 # @pytest.mark.parametrize("classname", [(classname)])
 # @pytest.mark.parametrize("channel", [0, 1, [0, 1]])

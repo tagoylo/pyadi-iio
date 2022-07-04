@@ -46,11 +46,13 @@ def attribute_single_value(
         val = start + step * ind
         # Check hardware
         if sub_channel:
+            print(dev_interface_sub_channel(uri, classname, sub_channel, val, attr, tol))
             assert (
                 dev_interface_sub_channel(uri, classname, sub_channel, val, attr, tol)
                 <= tol
             )
         else:
+            print(dev_interface(uri, classname, val, attr, tol) <= tol)
             assert dev_interface(uri, classname, val, attr, tol) <= tol
 
 
