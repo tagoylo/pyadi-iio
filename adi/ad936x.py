@@ -212,7 +212,7 @@ class ad9364(rx_tx_def, context_manager):
             self._set_iio_attr("voltage0", "sampling_frequency", False, rate)
         else:
             self._set_iio_attr("voltage0", "sampling_frequency", False, rate)
-            self._set_iio_attr("out", "voltage_filter_fir_en", False, 1)
+            self._set_iio_attr("out", "voltage_filter_fir_en", False, 1, True)
 
     @property
     def rx_lo(self):
