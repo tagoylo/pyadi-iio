@@ -52,7 +52,7 @@ def attribute_single_value(
                 <= tol
             )
         else:
-            print(dev_interface(uri, classname, val, attr, tol) <= tol)
+            print(dev_interface(uri, classname, val, attr, tol))
             assert dev_interface(uri, classname, val, attr, tol) <= tol
 
 
