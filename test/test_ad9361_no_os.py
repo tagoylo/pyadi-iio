@@ -114,44 +114,44 @@ params = dict(
 )
 
 
-#########################################
-@pytest.mark.iio_hardware(hardware)
-@pytest.mark.parametrize("classname", [(classname)])
-@pytest.mark.parametrize(
-    "attr, start, stop, step, tol, repeats",
-    [
-        ("tx_hardwaregain_chan0", -89.75, 0.0, 0.25, 0, 50),
-        ("tx_hardwaregain_chan1", -89.75, 0.0, 0.25, 0, 50),
-        ("rx_lo", 70000000, 6000000000, 1, 8, 50),
-        ("tx_lo", 47000000, 6000000000, 1, 8, 50),
-        #("sample_rate", 2084000, 61440000, 1, 4, 20),
-        ("loopback", 0, 0, 1, 0, 0),
-        ("loopback", 1, 1, 1, 0, 0),
-        ("loopback", 2, 2, 1, 0, 0),
-    ],
-)
-def test_ad9361_attr(
-    test_attribute_single_value,
-    iio_uri,
-    classname,
-    attr,
-    start,
-    stop,
-    step,
-    tol,
-    repeats,
-):
-    test_attribute_single_value(
-        iio_uri, classname, attr, start, stop, step, tol, repeats
-    )
+# #########################################
+# @pytest.mark.iio_hardware(hardware)
+# @pytest.mark.parametrize("classname", [(classname)])
+# @pytest.mark.parametrize(
+#     "attr, start, stop, step, tol, repeats",
+#     [
+#         ("tx_hardwaregain_chan0", -89.75, 0.0, 0.25, 0, 50),
+#         ("tx_hardwaregain_chan1", -89.75, 0.0, 0.25, 0, 50),
+#         ("rx_lo", 70000000, 6000000000, 1, 8, 50),
+#         ("tx_lo", 47000000, 6000000000, 1, 8, 50),
+#         #("sample_rate", 2084000, 61440000, 1, 4, 20),
+#         ("loopback", 0, 0, 1, 0, 0),
+#         ("loopback", 1, 1, 1, 0, 0),
+#         ("loopback", 2, 2, 1, 0, 0),
+#     ],
+# )
+# def test_ad9361_attr(
+#     test_attribute_single_value,
+#     iio_uri,
+#     classname,
+#     attr,
+#     start,
+#     stop,
+#     step,
+#     tol,
+#     repeats,
+# ):
+#     test_attribute_single_value(
+#         iio_uri, classname, attr, start, stop, step, tol, repeats
+#     )
 
 
-#########################################
-@pytest.mark.iio_hardware(hardware, True)
-@pytest.mark.parametrize("classname", [(classname)])
-@pytest.mark.parametrize("channel", [0, 1, [0, 1]])
-def test_ad9361_rx_data(test_dma_rx, iio_uri, classname, channel):
-    test_dma_rx(iio_uri, classname, channel)
+# #########################################
+# @pytest.mark.iio_hardware(hardware, True)
+# @pytest.mark.parametrize("classname", [(classname)])
+# @pytest.mark.parametrize("channel", [0, 1, [0, 1]])
+# def test_ad9361_rx_data(test_dma_rx, iio_uri, classname, channel):
+#     test_dma_rx(iio_uri, classname, channel)
 
 
 #########################################
@@ -162,12 +162,12 @@ def test_ad9361_tx_data(test_dma_tx, iio_uri, classname, channel):
     test_dma_tx(iio_uri, classname, channel)
 
 
-#########################################
-@pytest.mark.iio_hardware(hardware, True)
-@pytest.mark.parametrize("classname", [(classname)])
-@pytest.mark.parametrize("channel", [0, 1])
-def test_ad9361_loopback(test_dma_loopback, iio_uri, classname, channel):
-    test_dma_loopback(iio_uri, classname, channel)
+# #########################################
+# @pytest.mark.iio_hardware(hardware, True)
+# @pytest.mark.parametrize("classname", [(classname)])
+# @pytest.mark.parametrize("channel", [0, 1])
+# def test_ad9361_loopback(test_dma_loopback, iio_uri, classname, channel):
+#     test_dma_loopback(iio_uri, classname, channel)
 
 
 # #########################################
@@ -310,44 +310,44 @@ def test_ad9361_loopback(test_dma_loopback, iio_uri, classname, channel):
 #     )
 
 
-#########################################
-@pytest.mark.iio_hardware(hardware, True)
-@pytest.mark.parametrize("classname", [(classname)])
-@pytest.mark.parametrize("channel", [0, 1])
-@pytest.mark.parametrize(
-    "param_set, frequency, scale, peak_min",
-    [
-        (params["one_cw_tone_manual"], 2000000, 0.12, -47),
-        (params["one_cw_tone_manual"], 2000000, 0.25, -43),
-        # (params["one_cw_tone_manual"], 2000000, 0.06, -53),
-        # (params["change_attenuation_10dB_manual"], 2000000, 0.25, -50),
-        # (params["change_attenuation_5dB_manual"], 2000000, 0.25, -45.5),
-        # (params["change_rf_gain_5dB_manual"], 2000000, 0.25, -36),
-        # (params["one_cw_tone_slow_attack"], 500000, 0.06, -41.5),
-        # (params["one_cw_tone_slow_attack"], 1000000, 0.06, -41.5),
-        # (params["one_cw_tone_slow_attack"], 2000000, 0.06, -41.5),
-        # (params["one_cw_tone_slow_attack"], 2000000, 0.12, -41.5),
-        # (params["one_cw_tone_slow_attack"], 3000000, 0.25, -41.5),
-        # (params["one_cw_tone_slow_attack"], 4000000, 0.5, -41.5),
-        # (params["change_sampling_rate_60MSPS_slow_attack"], 2000000, 0.06, -41.5),
-        # (params["change_sampling_rate_15MSPS_slow_attack"], 2000000, 0.06, -41.5),
-        # (params["change_attenuation_20dB_slow_attack"], 1000000, 0.06, -43),
-        # (params["change_attenuation_0dB_slow_attack"], 1000000, 0.06, -43),
-    ],
-)
-def test_ad9361_dds_loopback(
-    test_dds_loopback,
-    iio_uri,
-    classname,
-    param_set,
-    channel,
-    frequency,
-    scale,
-    peak_min,
-):
-    test_dds_loopback(
-        iio_uri, classname, param_set, channel, frequency, scale, peak_min
-    )
+# #########################################
+# @pytest.mark.iio_hardware(hardware, True)
+# @pytest.mark.parametrize("classname", [(classname)])
+# @pytest.mark.parametrize("channel", [0, 1])
+# @pytest.mark.parametrize(
+#     "param_set, frequency, scale, peak_min",
+#     [
+#         (params["one_cw_tone_manual"], 2000000, 0.12, -47),
+#         (params["one_cw_tone_manual"], 2000000, 0.25, -43),
+#         # (params["one_cw_tone_manual"], 2000000, 0.06, -53),
+#         # (params["change_attenuation_10dB_manual"], 2000000, 0.25, -50),
+#         # (params["change_attenuation_5dB_manual"], 2000000, 0.25, -45.5),
+#         # (params["change_rf_gain_5dB_manual"], 2000000, 0.25, -36),
+#         # (params["one_cw_tone_slow_attack"], 500000, 0.06, -41.5),
+#         # (params["one_cw_tone_slow_attack"], 1000000, 0.06, -41.5),
+#         # (params["one_cw_tone_slow_attack"], 2000000, 0.06, -41.5),
+#         # (params["one_cw_tone_slow_attack"], 2000000, 0.12, -41.5),
+#         # (params["one_cw_tone_slow_attack"], 3000000, 0.25, -41.5),
+#         # (params["one_cw_tone_slow_attack"], 4000000, 0.5, -41.5),
+#         # (params["change_sampling_rate_60MSPS_slow_attack"], 2000000, 0.06, -41.5),
+#         # (params["change_sampling_rate_15MSPS_slow_attack"], 2000000, 0.06, -41.5),
+#         # (params["change_attenuation_20dB_slow_attack"], 1000000, 0.06, -43),
+#         # (params["change_attenuation_0dB_slow_attack"], 1000000, 0.06, -43),
+#     ],
+# )
+# def test_ad9361_dds_loopback(
+#     test_dds_loopback,
+#     iio_uri,
+#     classname,
+#     param_set,
+#     channel,
+#     frequency,
+#     scale,
+#     peak_min,
+# ):
+#     test_dds_loopback(
+#         iio_uri, classname, param_set, channel, frequency, scale, peak_min
+#     )
 
 
 # #########################################
