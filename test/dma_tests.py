@@ -85,15 +85,12 @@ def dma_tx(uri, classname, channel, use_tx2=False):
             enable through tx_enabled_channels
     """
     sdr = eval(classname + "(uri='" + uri + "')")
-    print("context created")
     TXFS = 1000
     N = 2 ** 15
     ts = 1 / float(TXFS)
     t = np.arange(0, N * ts, ts)
     fc = 10000
     d = np.cos(2 * np.pi * t * fc) * 2 ** 15 * 0.5
-    print("data created")
-    print(d)
 
     if use_tx2:
         if not isinstance(channel, list):
