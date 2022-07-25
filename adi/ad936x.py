@@ -186,7 +186,6 @@ class ad9364(rx_tx_def, context_manager):
             taps = 64
         # fmt: on
         current_rate = self._get_iio_attr("voltage0", "sampling_frequency", False)
-        print("current rate: " +str(current_rate))
 
         if self._get_iio_attr("out", "voltage_filter_fir_en", False):
             if current_rate <= (25000000 // 12):
@@ -200,7 +199,6 @@ class ad9364(rx_tx_def, context_manager):
         for i in range(taps):
             fir_config_string += str(fir[i]) + "," + str(fir[i]) + "\n"
         fir_config_string += "\n"
-        print("filter fir config: " + str(fir_config_string))
         self._set_iio_dev_attr_str("filter_fir_config", fir_config_string)
 
         if rate <= (25000000 // 12):
@@ -215,7 +213,6 @@ class ad9364(rx_tx_def, context_manager):
         else:
             self._set_iio_attr("voltage0", "sampling_frequency", False, rate)
             new_rate = self._get_iio_attr("voltage0", "sampling_frequency", False)
-            print("new rate: " +str(new_rate))
             self._set_iio_attr("out", "voltage_filter_fir_en", False, 1)
 
     @property

@@ -94,7 +94,6 @@ class attribute:
             channel = _ctrl.find_channel(channel_name, output)
         else:
             channel = self._ctrl.find_channel(channel_name, output)
-            print(channel)
         try:
             channel.attrs[attr_name].value = str(value)
         except Exception as ex:
