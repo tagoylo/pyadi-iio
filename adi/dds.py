@@ -162,6 +162,7 @@ class dds(attribute):
             chan = self._txdac.find_channel(
                 "TX" + str(channel + 1) + "_" + A + "_F1", True
             )
+            print("chanI: " +str(chan))
             if not chan and self._split_cores:
                 chan = self._txdac_chip_b.find_channel(
                     "TX"
@@ -174,9 +175,12 @@ class dds(attribute):
             chan.attrs["frequency"].value = str(frequency)
             chan.attrs["phase"].value = str(90000)
             chan.attrs["scale"].value = str(scale)
+            print("freqI: "+str(chan.attrs["frequency"].value))
+            print("scaleI: "+str(chan.attrs["scale"].value))
             chan = self._txdac.find_channel(
                 "TX" + str(channel + 1) + "_" + B + "_F1", True
             )
+            print("chanQ: " +str(chan))
             if not chan and self._split_cores:
                 chan = self._txdac_chip_b.find_channel(
                     "TX"
@@ -189,6 +193,8 @@ class dds(attribute):
             chan.attrs["frequency"].value = str(frequency)
             chan.attrs["phase"].value = str(0)
             chan.attrs["scale"].value = str(scale)
+            print("freqQ: "+str(chan.attrs["frequency"].value))
+            print("scaleQ: "+str(chan.attrs["scale"].value))
         else:
             if frequency < 0:
                 Exception("Frequency must be positive")

@@ -301,7 +301,7 @@ def dds_loopback(
 
     # Pass through SDR
     try:
-        for _ in range(50):  # Wait
+        for _ in range(10):  # Wait
             data = sdr.rx2() if use_rx2 else sdr.obs.rx() if use_obs else sdr.rx()
     except Exception as e:
         del sdr
