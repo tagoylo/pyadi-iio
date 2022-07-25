@@ -301,12 +301,14 @@ def dds_loopback(
 
     # Pass through SDR
     try:
-        for _ in range(10):  # Wait
+        for _ in range(15):  # Wait
             data = sdr.rx2() if use_rx2 else sdr.obs.rx() if use_obs else sdr.rx()
+            time.sleep(5)
     except Exception as e:
         del sdr
         raise Exception(e)
     del sdr
+    time.sleep(10)
     tone_peaks, tone_freqs = spec.spec_est(data, fs=RXFS, ref=2 ** 15, plot=False)
     indx = np.argmax(tone_peaks)
     diff = np.abs(tone_freqs[indx] - frequency)

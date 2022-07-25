@@ -162,6 +162,7 @@ class dds(attribute):
             chan = self._txdac.find_channel(
                 "TX" + str(channel + 1) + "_" + A + "_F1", True
             )
+            print("TX" + str(channel + 1) + "_" + A + "_F1")
             print("chanI: " +str(chan))
             if not chan and self._split_cores:
                 chan = self._txdac_chip_b.find_channel(
@@ -180,6 +181,7 @@ class dds(attribute):
             chan = self._txdac.find_channel(
                 "TX" + str(channel + 1) + "_" + B + "_F1", True
             )
+            print("TX" + str(channel + 1) + "_" + B + "_F1")
             print("chanQ: " +str(chan))
             if not chan and self._split_cores:
                 chan = self._txdac_chip_b.find_channel(
