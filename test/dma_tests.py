@@ -294,17 +294,16 @@ def dds_loopback(
     # Create a sinewave waveform
     if hasattr(sdr, "sample_rate"):
         RXFS = int(sdr.sample_rate)
+        print("RXFS:" +str(RXFS))
     else:
         RXFS = int(sdr.orx_sample_rate) if use_obs else int(sdr.rx_sample_rate)
 
     sdr.dds_single_tone(frequency, scale, channel)
-
+    time.sleep(10)
     # Pass through SDR
     try:
-        for _ in range(15):  # Wait
+        for _ in range(10):  # Wait
             data = sdr.rx2() if use_rx2 else sdr.obs.rx() if use_obs else sdr.rx()
-            print(data)
-            time.sleep(30)
     except Exception as e:
         del sdr
         raise Exception(e)
