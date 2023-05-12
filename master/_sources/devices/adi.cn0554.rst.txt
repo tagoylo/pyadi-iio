@@ -1,7 +1,7 @@
-adi.ad9166 module
+cn0554
 =================
 
-.. automodule:: adi.ad916x
+.. automodule:: adi.cn0554
    :members:
    :undoc-members:
    :show-inheritance:
