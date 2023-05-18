@@ -203,5 +203,7 @@ def get_test_map():
         "zynq-zc706-adv7511-ad9625-fmcadc3",
         "zynq-zc706-adv7511-fmcomms11",
     ]
+    test_map["adxl355"] = ["max32650_adxl355"]
+    test_map["adt7420"] = ["max78000_adt7420"]
 
     return test_map
