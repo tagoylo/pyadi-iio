@@ -24,7 +24,7 @@ def test_adxl355_attr(
     step,
     tol,
     repeats,
-    sub_channel
+    sub_channel,
 ):
     test_attribute_single_value(
         iio_uri, classname, attr, start, stop, step, tol, repeats, sub_channel
