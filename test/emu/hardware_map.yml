@@ -155,7 +155,7 @@ cn0554:
       - filename: cn0554.xml
       - data_devices:
           - iio:device0
-          - iio:device1                    
+          - iio:device1
 
 # SOMS
 adrv9361:
@@ -226,6 +226,12 @@ adrv9371:
       - data_devices:
           - iio:device4
           - iio:device6
+adt7420:
+  - adt7420
+  - emulate:
+      - filename: adt7420.xml
+  - pyadi_iio_class_support:
+      - adt7420
 adxl355:
   - adxl355
   - emulate:
@@ -291,7 +297,7 @@ ad7768:
       - filename: ad7768.xml
       - data_devices:
           - iio:device0
-          
+
 ad5592r:
   - ad5592r
   - pyadi_iio_class_support:
