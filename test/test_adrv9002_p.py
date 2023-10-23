@@ -227,8 +227,8 @@ def test_adrv9002_interface_gain_narrowband(
 @pytest.mark.parametrize(
     "profile_file, depends",
     [
-        (lte_40_lvds_profile, {"write_stream": lte_40_lvds_stream}),
-        (lte_20_lvds_profile, {"write_stream": lte_20_lvds_stream}),
+        (lte_40_lvds_profile, {"stream": lte_40_lvds_stream}),
+        (lte_20_lvds_profile, {"stream": lte_20_lvds_stream}),
     ],
 )
 def test_adrv9002_profile_write(
@@ -250,7 +250,7 @@ def test_adrv9002_profile_write(
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize("attr", ["profile"])
 @pytest.mark.parametrize(
-    "profile_file, depends", [(nco_test_profile, {"write_stream": nco_test_stream})]
+    "profile_file, depends", [(nco_test_profile, {"stream": nco_test_stream})]
 )
 def test_adrv9002_nco_write_profile(
     test_attribute_write_only_str_with_depends,
@@ -271,7 +271,7 @@ def test_adrv9002_nco_write_profile(
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize("attr", ["profile"])
 @pytest.mark.parametrize(
-    "profile_file, depends", [(lte_5_cmos_profile, {"write_stream": lte_5_cmos_stream})]
+    "profile_file, depends", [(lte_5_cmos_profile, {"stream": lte_5_cmos_stream})]
 )
 def test_adrv9002_stream_profile_write(
     test_attribute_write_only_str_with_depends,
