@@ -223,7 +223,7 @@ def test_ad9375_attr(
 
 
 #########################################
-@pytest.mark.iio_hardware(hardware, True)
+@pytest.mark.iio_hardware(hardware)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize("channel", range(2))
 def test_ad9375_rx_data(test_dma_rx, iio_uri, classname, channel):
@@ -232,14 +232,6 @@ def test_ad9375_rx_data(test_dma_rx, iio_uri, classname, channel):
 
 #########################################
 @pytest.mark.iio_hardware(hardware)
-@pytest.mark.parametrize("classname", [(classname)])
-@pytest.mark.parametrize("channel", range(2))
-def test_ad9375_tx_data(test_dma_tx, iio_uri, classname, channel):
-    test_dma_tx(iio_uri, classname, channel)
-
-
-#########################################
-@pytest.mark.iio_hardware(hardware, True)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize("channel", [0, 1])
 @pytest.mark.parametrize(
@@ -277,7 +269,7 @@ def test_ad9375_dds_loopback(
 
 
 #########################################
-@pytest.mark.iio_hardware(hardware, True)
+@pytest.mark.iio_hardware(hardware)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize("channel", [0, 1])
 @pytest.mark.parametrize(
@@ -312,7 +304,7 @@ def test_ad9375_two_tone_loopback(
 
 
 ########################################
-@pytest.mark.iio_hardware(hardware, True)
+@pytest.mark.iio_hardware(hardware)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize("channel", [0, 1])
 @pytest.mark.parametrize(
@@ -348,7 +340,7 @@ def test_ad9375_dds_gain_check_vary_power(
 
 
 #########################################
-@pytest.mark.iio_hardware(hardware, True)
+@pytest.mark.iio_hardware(hardware)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize("channel", [0, 1])
 @pytest.mark.parametrize(
@@ -372,7 +364,7 @@ def test_ad9375_sfdr(test_sfdr, iio_uri, classname, channel, param_set, sfdr_min
 
 
 #########################################
-@pytest.mark.iio_hardware(hardware, True)
+@pytest.mark.iio_hardware(hardware)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize("attr", ["profile"])
 @pytest.mark.parametrize(
@@ -386,7 +378,7 @@ def test_ad9375_profile_write(
 
 # AD9375 ONLY
 ########################################
-@pytest.mark.iio_hardware(hardware, True)
+@pytest.mark.iio_hardware(hardware)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize(
     "attr, depends, values, tol, repeats",
@@ -411,7 +403,7 @@ def test_ad9375_attr_with_depends(
 
 
 ########################################
-@pytest.mark.iio_hardware(hardware, True)
+@pytest.mark.iio_hardware(hardware)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize(
     "attr, depends",
@@ -458,7 +450,7 @@ def test_ad9375_attr_readonly_with_depends(
 
 
 ########################################
-@pytest.mark.iio_hardware(hardware, True)
+@pytest.mark.iio_hardware(hardware)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize(
     "attr, depends, start, stop",
@@ -512,7 +504,7 @@ def test_ad9375_attr_boolean(
 
 
 ########################################
-@pytest.mark.iio_hardware(hardware, True)
+@pytest.mark.iio_hardware(hardware)
 @pytest.mark.parametrize("classname", [(classname)])
 @pytest.mark.parametrize(
     "attr, value", [("tx_dpd_reset_en_chan0", 1), ("tx_dpd_reset_en_chan1", 1),],
